@@ -23,6 +23,7 @@ class Parser():
                     if(isVar == 1):
                         AST().setVariable(self.tokens[i])
                         isVar = 0
+                        break
                         
                     
                 
