@@ -21,7 +21,7 @@ class AST():
 
         # Check if its a variable and set it's value
         if(isVar == 1):
-            string = self._getVariable(string.strip("$"))
+            string = self._evalVariable(string)
 
         # Check if its an expression and get it's value
         try:
@@ -36,7 +36,7 @@ class AST():
         var_name = ""
         var_value = ""
         isVar = 0
-        print(tokens)
+        #print(tokens)
         for token in tokens:
             if(token.startswith("$")):
                 if(isVar == 1):
@@ -62,7 +62,7 @@ class AST():
         if var_value.startswith("\""):
             var_value = var_value.strip("\"")
         vars[var_name] = var_value
-        print(vars)
+        #print(vars)
         
     # Get Variables
     def _getVariable(self,varName):

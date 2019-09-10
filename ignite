@@ -3,7 +3,7 @@ from sys import *
 from lexer import Lexer
 from parser import Parser
 
-_version = "0.0.1+4" #user input, variables
+_version = "0.0.1+4" 
 
 def open_file(filename):
     data = open(filename,"r").read()
@@ -15,7 +15,7 @@ def init():
     else:
         data = open_file(argv[1])
         tokens = Lexer(data).lex()
-        print(tokens)
+        #print(tokens)
         Parser(tokens).parse()
 
 init()
