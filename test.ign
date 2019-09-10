@@ -1,4 +1,4 @@
-$name : io = "tell your name: ";
+$name : io ;
 
 $age : io= "tell your Age: ";
 

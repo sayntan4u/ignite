@@ -50,8 +50,11 @@ class AST():
                 pass
             else:
                 if(token == "io"):
-                    var_value = raw_input(tokens[4].strip("\""))
-                    break
+                    if(len(tokens) > 4):
+                        var_value = raw_input(tokens[4].strip("\""))
+                        break
+                    else:
+                        var_value = raw_input()
                 else:
                     var_value = token
                 
