@@ -38,7 +38,7 @@ class AST():
         isVar = 0
         #print(tokens)
         for token in tokens:
-            if(token.startswith("$")):
+            if("$" in token):
                 if(isVar == 1):
                     isVar = 0
                 else:
@@ -77,7 +77,7 @@ class AST():
         multipleVar = False
         #print(token)
         
-        if(token.startswith("$")):
+        if("$" in token):
             
             for mo in mat_ops:
                 if mo in token:
@@ -88,7 +88,8 @@ class AST():
             if(multipleVar):
                 for char in list(token):
                     if char in mat_ops:
-                        tks.append(tk)
+                        if tk!= "":
+                            tks.append(tk)
                         tks.append(char)
                         tk = ""
                     else:
