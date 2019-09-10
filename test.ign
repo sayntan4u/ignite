@@ -1,0 +1,14 @@
+$name : io = "tell your name: ";
+
+$age : io= "tell your Age: ";
+
+print : $name;
+print : $age;
+
+
+
+
+
+
+
+
