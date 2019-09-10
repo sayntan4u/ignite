@@ -15,7 +15,7 @@ def init():
     else:
         data = open_file(argv[1])
         tokens = Lexer(data).lex()
-        #print(tokens)
+        print(tokens)
         Parser(tokens).parse()
 
 init()

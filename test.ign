@@ -1,12 +1,19 @@
-$name : io ;
+################     Demo section      #################
 
-$age : io= "tell your Age: ";
-
-print : $name;
-print : $age;
+#$name : io ;
+#$age : io= "tell your Age: ";
 
 
 
+#################   code section    ######################
+
+
+$var1 = 6;
+
+$var2 = 7;
+
+
+$var3 = $var2 + $var1;
 
 
 

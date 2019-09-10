@@ -1,4 +1,5 @@
 from global_shared import vars
+from ops_parens import *
 
 class AST():
     def __init__(self):
@@ -35,7 +36,7 @@ class AST():
         var_name = ""
         var_value = ""
         isVar = 0
-        #print(tokens)
+        print(tokens)
         for token in tokens:
             if(token.startswith("$")):
                 if(isVar == 1):
@@ -45,7 +46,7 @@ class AST():
                 if(isVar == 1):
                     var_name = token.strip("$")  
                 else:
-                    var_value = vars[token.strip("$")]            
+                    var_value = self._evalVariable(token)
             elif(token == "="):
                 pass
             else:
@@ -61,8 +62,55 @@ class AST():
         if var_value.startswith("\""):
             var_value = var_value.strip("\"")
         vars[var_name] = var_value
-        #print(vars)
+        print(vars)
         
     # Get Variables
     def _getVariable(self,varName):
         return vars[varName]
+    
+    # Evaluate multiple Variables from token
+    def _evalVariable(self,token):
+        
+        tks =[]
+        tk = ""
+        expression = ""
+        multipleVar = False
+        #print(token)
+        
+        if(token.startswith("$")):
+            
+            for mo in mat_ops:
+                if mo in token:
+                    multipleVar = True
+                    break
+            
+            
+            if(multipleVar):
+                for char in list(token):
+                    if char in mat_ops:
+                        tks.append(tk)
+                        tks.append(char)
+                        tk = ""
+                    else:
+                        tk += char
+                        #print("tk :" + tk)
+                if(tk != ""):
+                    tks.append(tk)
+                #print(tks)
+                
+                for tk in tks:
+                    if tk.startswith("$"):
+                        val = self._getVariable(tk.strip("$"))
+                        expression += val
+                    else:
+                        expression += tk
+                
+                
+                return str(eval(expression))
+            else:
+                return  self._getVariable(token.strip("$"))
+                
+                
+                
+        
+            
